@@ -10,11 +10,6 @@
 	{%endif%}
 {%endfor%}
 
-{%if isAffiliateProduct%}
-	<a href='{{affiliateLink}}'>See On Amazon</a>
-{%endif%}
-
-
 <div class="product-template__container page-width"
   id="ProductSection-{{ section.id }}"
   data-section-id="{{ section.id }}"
@@ -263,6 +258,9 @@
                 {% if section.settings.enable_payment_button %}
                   {{ form | payment_button }}
                 {% endif %}
+
+                {%else%}
+                  <a href='{{affiliateLink}}'>See On Amazon</a>
                 {%endunless%}
               </div>
             </div>
