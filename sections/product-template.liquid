@@ -174,7 +174,7 @@
             </div>
           {%- endif -%}
 
-          {%endunless%}
+        {%endunless%}
 
           {% capture "form_classes" -%}
             product-form product-form-{{ section.id }}
@@ -241,6 +241,8 @@
                 {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
                 {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}"
               >
+
+              {%unless isAffiliateProduct%}
                 <button type="submit" name="add"
                   {% unless current_variant.available %} aria-disabled="true"{% endunless %}
                   aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
@@ -261,6 +263,7 @@
                 {% if section.settings.enable_payment_button %}
                   {{ form | payment_button }}
                 {% endif %}
+                {%endunless%}
               </div>
             </div>
           {% endform %}
